@@ -50,6 +50,7 @@ import info.nightscout.androidaps.plugins.pump.omnipod.driver.manager.PodStateMa
  */
 @Singleton
 public class OmnipodRileyLinkCommunicationManager extends RileyLinkCommunicationManager<OmnipodPacket> {
+
     // This empty constructor must be kept, otherwise dagger injection might break!
     @Inject
     public OmnipodRileyLinkCommunicationManager() {
@@ -79,6 +80,10 @@ public class OmnipodRileyLinkCommunicationManager extends RileyLinkCommunication
     public void setPumpDeviceState(PumpDeviceState pumpDeviceState) {
         // Intentionally left blank
         // We don't use PumpDeviceState in the Omnipod driver
+    }
+
+    @Override protected OmnipodPacket sendAndListen(OmnipodPacket msg, int timeout_ms, int repeatCount, int retryCount, Integer extendPreamble_ms) throws RileyLinkCommunicationException {
+        return super.sendAndListen(msg, timeout_ms, repeatCount, retryCount, extendPreamble_ms);
     }
 
     public <T extends MessageBlock> T sendCommand(Class<T> responseClass, PodStateManager podStateManager, MessageBlock command) {
@@ -129,11 +134,11 @@ public class OmnipodRileyLinkCommunicationManager extends RileyLinkCommunication
                 aapsLogger.debug(LTag.PUMPBTCOMM, "Received response from the Pod [responseMessageBlock={}]", responseMessageBlock);
 
                 if (responseMessageBlock instanceof StatusUpdatableResponse) {
-                    podStateManager.updateFromResponse((StatusUpdatableResponse) responseMessageBlock);
+                    podStateManager.updateFromResponse((StatusUpdatableResponse) responseMessageBlock, message);
                 } else if (responseMessageBlock instanceof PodInfoResponse) {
                     PodInfo podInfo = ((PodInfoResponse) responseMessageBlock).getPodInfo();
                     if (podInfo instanceof StatusUpdatableResponse) {
-                        podStateManager.updateFromResponse((StatusUpdatableResponse) podInfo);
+                        podStateManager.updateFromResponse((StatusUpdatableResponse) podInfo, message);
                     }
                 }
 
@@ -383,5 +388,4 @@ public class OmnipodRileyLinkCommunicationManager extends RileyLinkCommunication
 
         throw new RileyLinkUnreachableException();
     }
-
 }
