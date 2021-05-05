@@ -88,7 +88,7 @@ dependencies {
 
     // Omnipod - start
     implementation 'org.apache.commons:commons-lang3:3.10'
-    implementation 'net.danlew:android.joda:2.10.6'
+    implementation 'net.danlew:android.joda:2.10.9.1'
     implementation "com.google.code.gson:gson:2.8.6"
     implementation(name: "com.atech-software.android.library.wizardpager-1.1.4", ext: "aar")
     // Omnipod - end

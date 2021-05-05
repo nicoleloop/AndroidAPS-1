@@ -73,7 +73,7 @@ dependencies {
     implementation "com.jjoe64:graphview:4.0.1"
 
     //DateUtil
-    implementation 'net.danlew:android.joda:2.10.6'
+    implementation 'net.danlew:android.joda:2.10.9.1'
 
     //db
     implementation "com.j256.ormlite:ormlite-core:${ormLiteVersion}"

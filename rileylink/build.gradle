@@ -64,7 +64,7 @@ dependencies {
 
     // rileylink - start
     implementation 'org.apache.commons:commons-lang3:3.10'
-    implementation 'net.danlew:android.joda:2.10.6'
+    implementation 'net.danlew:android.joda:2.10.9.1'
     implementation 'org.slf4j:slf4j-api:1.7.30'
     // rileylink - end
 
