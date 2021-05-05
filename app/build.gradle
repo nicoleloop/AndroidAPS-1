@@ -307,7 +307,7 @@ dependencies {
     implementation 'com.eatthepath:java-otp:0.2.0'
 
     testImplementation "junit:junit:4.13"
-    testImplementation 'org.json:json:20200518'
+    testImplementation 'org.json:json:20210307'
     testImplementation "org.mockito:mockito-core:2.8.47"
     testImplementation "org.powermock:powermock-api-mockito2:${powermockVersion}"
     testImplementation "org.powermock:powermock-module-junit4-rule-agent:${powermockVersion}"
