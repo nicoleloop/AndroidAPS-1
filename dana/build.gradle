@@ -55,7 +55,7 @@ dependencies {
 
     implementation "io.reactivex.rxjava2:rxandroid:${rxandroid_version}"
 
-    implementation 'net.danlew:android.joda:2.10.6'
+    implementation 'net.danlew:android.joda:2.10.9.1'
 
     // Graphview cannot be upgraded
     implementation "com.jjoe64:graphview:4.0.1"
